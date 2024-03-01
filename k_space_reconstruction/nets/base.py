@@ -19,9 +19,10 @@ from torch.optim import Optimizer
 
 from k_space_reconstruction.utils.loss import RAdam
 from k_space_reconstruction.utils.metrics import nmse, psnr, ssim, vif, pt_msssim, pt_ssim
+import torchmetrics
 
 
-class DistributedMetricSum(pl.metrics.Metric):
+class DistributedMetricSum(torchmetrics.Metric):
     def __init__(self, dist_sync_on_step=True):
         super().__init__(dist_sync_on_step=dist_sync_on_step)
 
